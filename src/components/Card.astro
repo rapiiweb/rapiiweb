@@ -1,61 +1,66 @@
 ---
-interface Props {
-	title: string;
-	body: string;
-	href: string;
-}
-
-const { href, title, body } = Astro.props;
+const globeMaxSize = 650;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
-<style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+<canvas id="cobe" width={globeMaxSize} height={globeMaxSize} class="dark:opacity-50"></canvas>
+
+<script define:vars={{ globeMaxSize }} type="module">
+	import createGlobe from "https://cdn.skypack.dev/cobe";
+
+	let canvas = document.getElementById("cobe");
+	let globeSize = computeGlobeSize(globeMaxSize);
+
+	canvas.width = globeSize;
+	canvas.height = globeSize;
+
+	let phi = 0;
+
+	function computeGlobeSize(globeMaxSize) {
+		let size = globeMaxSize;
+		const { innerWidth: width } = window;
+		if (width < globeMaxSize) {
+			size = width - 300;
+		}
+		return size;
 	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
+
+	function addGlobe(canvas) {
+		const globe = createGlobe(canvas, {
+			width: globeSize,
+			height: globeSize,
+			phi: 0,
+			theta: 0,
+			dark: 0,
+			diffuse: 1.2,
+			scale: 1,
+			mapSamples: 16000,
+			mapBrightness: 5,
+			baseColor: [1, 1, 1],
+			markerColor: [1, 0.5, 1],
+			glowColor: [1, 1, 1],
+			offset: [0, 0],
+			opacity: 0.9,
+			markers: [
+				{ location: [37.7595, -122.4367], size: 0.03 },
+				{ location: [40.7128, -74.006], size: 0.1 },
+			],
+			onRender: (state) => {
+				// Called on every animation frame.
+				// `state` will be an empty object, return updated params.
+				state.phi = phi;
+				phi += 0.001;
+			},
+		});
+
+		return globe;
 	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
-</style>
+
+	addGlobe(canvas);
+
+	// TODO: Update the globe dimensions when the window is resized
+	//   window.addEventListener("resize", () => {
+	//     let globeSize = computeGlobeSize(globeMaxSize);
+	//     canvas.width = globeSize;
+	//     canvas.height = globeSize;
+	//   });
+</script>

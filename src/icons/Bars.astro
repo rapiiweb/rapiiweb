@@ -1,0 +1,15 @@
+---
+interface Props {
+    strokeWidth?: string | number | null | undefined;
+    stroke?: string | null | undefined;
+    width?: string | number | null | undefined;
+    height?: string | number | null | undefined;
+}
+
+const { strokeWidth = 2, stroke = "#FFFFFF", width = 28, height = 28 } = Astro.props;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width={width} height={height} stroke-width={strokeWidth} stroke={stroke} class="icon icon-bars" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
+</svg>
+  

@@ -1,0 +1,201 @@
+---
+import Rapiiweb from '../icons/Rapiiweb.astro';
+import Bars from '../icons/Bars.astro';
+import Mark from '../icons/Mark.astro';
+import Home from '../icons/Home.astro';
+import Squares from '../icons/Squares.astro';
+import Pencil from '../icons/Pencil.astro';
+import Users from '../icons/Users.astro';
+import Chat from '../icons/Chat.astro';
+---
+
+<header>
+
+    <nav class="">
+
+        <div class="max-w-screen-lg flex flex-wrap items-center mx-auto px-8 py-6">
+    
+            <a href="https://rapiiweb.com/" aria-label="Rapiiweb Logo">
+                <Rapiiweb/>
+            </a>
+
+
+    
+            <div class="hidden lg:block ml-12">
+                <ul class="flex flex-row gap-6">
+                    <li>
+                        <a href="#" class="text-base font-medium text-white" aria-current="page">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-base font-medium text-white">Services</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-base font-medium text-white">Nosotros</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-base font-medium text-white">Blog</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="ml-auto flex flex-row">
+
+                <ul class="flex flex-row items-center gap-6">
+                    <li class="hidden lg:block">
+                        <a href="#" class="text-base font-medium text-white">Nosotros</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block text-base font-medium text-black bg-white rounded-3xl px-4 py-1.5">Registrarme</a>             
+                    </li>
+                </ul>
+                
+                <button id="sidebar-button" type="button" class="toggle-sidebar lg:hidden ml-6 p-1 rounded-full hover:bg-white/5" aria-controls="sidebar" aria-expanded="false" aria-label="Abrir menu de navegación">
+                    <Bars/>
+                </button>        
+            </div>
+        </div>
+    </nav>
+    
+    
+    <div class="relative z-50" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+
+        <div id="overlay" class="toggle-sidebar pointer-events-none fixed inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity ease-in-out duration-500" aria-hidden="true"></div>
+
+            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+
+                <div id="sidebar" class="pointer-events-auto w-screen max-w-96 transform translate-x-full transition-transform ease-in-out duration-500">
+
+                    <div class="flex h-full flex-col overflow-y-auto bg-black shadow-xl">
+                    
+                        <div class="flex items-center justify-between px-8 py-6">
+                            <a href="https://rapiiweb.com/" aria-label="Rapiiweb Logo">
+                                <Rapiiweb/>
+                            </a>
+                        
+                            <button type="button" class="toggle-sidebar ml-6 p-1 rounded-full hover:bg-white/5" type="button" aria-controls="sidebar" aria-label="Cerrar menu de navegación">
+                                <Mark/>
+                            </button>        
+                        </div>
+                    
+                        <ul class="flex-1 space-y-2 font-medium mt-3 px-6">
+                            <li>
+                                <a href="#" class="flex items-center text-base font-medium text-neutral-400 px-4 py-2.5 rounded-3xl hover:bg-white/5 group">
+                                    <Home fill="#a3a3a3"/> <!-- fill-neutral-400 -->
+                                    <span class="ms-3">Inicio</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-base font-medium text-neutral-400 px-4 py-2.5 rounded-3xl hover:bg-white/5">
+                                    <Squares fill="#a3a3a3"/> <!-- fill-neutral-400 -->
+                                    <span class="ms-3">Servicios</span>                         
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-base font-medium text-neutral-400 px-4 py-2.5 rounded-3xl hover:bg-white/5">
+                                    <Users fill="#a3a3a3"/> <!-- fill-neutral-400 -->
+                                    <span class="ms-3">Nosotros</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-base font-medium text-neutral-400 px-4 py-2.5 rounded-3xl hover:bg-white/5">
+                                    <Pencil fill="#a3a3a3"/> <!-- fill-neutral-400 -->
+                                    <span class="ms-3">Blog</span>
+                                </a>
+                            </li>   
+                            <li>
+                                <a href="#" class="flex items-center text-base font-medium text-neutral-400 px-4 py-2.5 rounded-3xl hover:bg-white/5">
+                                    <Chat fill="#a3a3a3"/> <!-- fill-neutral-400 -->
+                                    <span class="ms-3">Contacto</span>
+                                </a>
+                            </li>                     
+                        </ul>
+                    
+                        <ul class="space-y-3 font-medium p-6 ">                    
+                            <li>
+                                <a href="#" class="flex items-center text-base font-medium text-black rounded-3xl px-4 py-2.5 bg-white hover:bg-gray-100 group">
+                                    <svg class="flex-shrink-0 w-6 h-6 fill-black transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                                        <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
+                                    </svg>
+                                    <span class="ms-3">Products</span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <span class="flex justify-center text-center text-base font-medium text-white px-4 py-2.5">
+                                    The span element o <a href="#" class="text-neutral-400 ms-1">Users</a>
+                                </span>
+                            </li>
+                        </ul>
+                    
+                    </div>
+                
+                </div>
+            
+            </div>
+            
+
+
+    </div>
+
+</header>
+
+<style>
+    body.overflow-hidden {
+        overflow: hidden;
+	}
+</style>
+
+
+<script>
+    const sidebar = document.getElementById('sidebar') as HTMLElement;
+    const overlay = document.getElementById('overlay') as HTMLElement;
+    const sidebarButton = document.getElementById('sidebar-button') as HTMLElement;
+
+    const toggleSidebarButton = document.querySelectorAll('.toggle-sidebar');
+
+    const toggleSidebar = () => {
+        console.log("hola")
+
+        /* sidebar */
+        sidebar.classList.toggle('translate-x-full');
+
+        overlay.classList.toggle('pointer-events-none');
+        overlay.classList.toggle('opacity-0');
+
+        /* button */
+        const isExpanded = sidebarButton.getAttribute('aria-expanded') === 'true';
+        sidebarButton.setAttribute('aria-expanded', (!isExpanded).toString());
+
+       /*  sidebar.setAttribute('aria-hidden', isExpanded.toString()); */
+        
+        /* body */
+        document.body.classList.toggle('overflow-hidden');
+    };
+
+    toggleSidebarButton.forEach(button => {
+        button.addEventListener('click', toggleSidebar);
+    });
+
+     
+    /*     sidebarButton.forEach(btn => {
+           
+            btn.addEventListener('click', toggleSidebar);
+        });
+   */
+
+  /*  const SidebarAccessibility = () => {
+        const isExpanded = sidebarButton.getAttribute('aria-expanded') === 'true';
+
+        sidebarButton.setAttribute('aria-expanded', (!isExpanded).toString());
+        sidebar.setAttribute('aria-hidden', isExpanded.toString());
+    };
+
+    sidebarButton.addEventListener('click', () => {
+        
+        SidebarAccessibility();
+
+        sidebar.classList.toggle('hidden');
+        console.log(sidebar.classList)
+        document.body.classList.toggle('overflow-hidden'); // Esto desactiva el scroll
+    }); */
+</script>
